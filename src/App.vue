@@ -25,6 +25,10 @@
       </div>
     </nav>
 
+    <div class="main">
+      <router-view></router-view>
+    </div>
+
     <footer class="bg-primary text-light">
       <div>Design in {{ new Date().getFullYear() }}</div>
     </footer>
