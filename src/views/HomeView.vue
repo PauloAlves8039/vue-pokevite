@@ -1,14 +1,24 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, computed } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
 
 let urlBaseSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
-let pokemons = reactive();
+let pokemons = reactive(ref());
+let searchPokemonField = ref("");
 
 onMounted(() => {
   fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
     .then(res => res.json())
     .then(res => pokemons = res.results);
+});
+
+const pokemonsFiltered = computed(() => {
+  if(pokemons.value && searchPokemonField.value){
+    return pokemons.value.filter(pokemon => 
+      pokemon.name.toLowerCase().includes(searchPokemonField.value.toLowerCase())
+    );
+  }
+  return pokemons.value;
 });
 
 </script>
@@ -31,8 +41,26 @@ onMounted(() => {
         <div class="col-sm-12 col-md-6">
             <div class="card">
               <div class="card-body row">
+
+                <div class="mb-3">
+                  <label 
+                    hidden 
+                    for="searchPokemonField" 
+                    class="form-label">
+                      Pesquisar...
+                  </label>
+
+                  <input 
+                    v-model="searchPokemonField"
+                    type="text" 
+                    class="form-control" 
+                    id="searchPokemonField" 
+                    placeholder="Pesquisar..."
+                  >
+                </div>
+
                 <ListPokemons
-                v-for="pokemon in pokemons"
+                v-for="pokemon in pokemonsFiltered"
                 :key="pokemon.name"
                 :name="pokemon.name"
                 :urlBaseSvg="urlBaseSvg + pokemon.url.split('/')[6] + '.svg'" 
