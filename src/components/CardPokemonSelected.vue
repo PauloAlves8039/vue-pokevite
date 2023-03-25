@@ -1,10 +1,12 @@
 <script setup>
-const pokemon = defineProps(["name", "xp", "height", "img"]);
+const pokemon = defineProps(["name", "xp", "height", "img", "loading"]);
 
 </script>
 
 <template>
-  <div class="card cardPokemonSelected">
+  <div class="card cardPokemonSelected" 
+  :class="loading ? '' : 'animate__animated animate__flipInX'"
+  >
     <img 
       :src="pokemon.img" 
       class="card-img-top pt-2 pokemon-img" 
