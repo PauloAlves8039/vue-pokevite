@@ -35,6 +35,13 @@
 </template>
 
 <style>
+body{
+  overflow: hidden;
+  min-height: 100vh;
+  background: rgb(106,196,233);
+  background: linear-gradient(0deg, rgba(106,196,233,0.9360119047619048) 0%, rgba(0,41,150,1) 100%);
+}
+
 footer {
   position: fixed;
   bottom: 0;
