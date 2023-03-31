@@ -15,10 +15,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link" aria-current="page" to="/">Home</router-link>
+              <router-link class="nav-link" aria-current="page" to="/">Início</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/about">About</router-link>
+              <router-link class="nav-link" to="/about">Sobre</router-link>
             </li>
           </ul>
         </div>
@@ -30,7 +30,7 @@
     </div>
 
     <footer class="bg-primary text-light">
-      <div>Design in {{ new Date().getFullYear() }}</div>
+      <div>Desenvolvido em {{ new Date().getFullYear() }}</div>
     </footer>
 </template>
 
