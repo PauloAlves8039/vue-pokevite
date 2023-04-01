@@ -20,14 +20,14 @@ const pokemon = defineProps(["name", "xp", "height", "img", "loading"]);
     alt="???"
     >
     <div class="card-body">
-      <h5 class="card-title text-center">{{ pokemon.name || '???'}}</h5>
+      <h5 class="card-title text-center text-color">{{ pokemon.name || '???'}}</h5>
       <hr>
-      <div class="row text-center">
+      <div class="row text-center text-color">
         <section class="col">
           <strong>XP: </strong>
           <span>{{ pokemon.xp }}</span>
         </section>
-        <section class="col">
+        <section class="col text-color">
           <strong>Altura: </strong>
           <span>{{ pokemon.height }}</span>
         </section>
@@ -45,6 +45,10 @@ const pokemon = defineProps(["name", "xp", "height", "img", "loading"]);
 
 .cardPokemonSelected img{
     height: 250px;
+}
+
+.text-color {
+  color: #FFF;
 }
 
 @media (max-width: 768px) {
